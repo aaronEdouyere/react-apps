@@ -123,10 +123,6 @@ class TodoApp extends React.Component {
                     newTask
                 ]
             })
-            this.setState({taskDetails: {
-                tasksCompleted: 0,
-                totalTasks: this.state.taskDetails.totalTasks + 1
-            }})
         });
 
         }
@@ -196,10 +192,6 @@ class TodoApp extends React.Component {
                 if(!this.state.todoList.length) {
                     this.showEmptyPanel()
                 }
-                this.setState({taskDetails: {
-                    tasksCompleted: 0,
-                    totalTasks: this.state.taskDetails.totalTasks - 1
-                }})
             });
     }
 
