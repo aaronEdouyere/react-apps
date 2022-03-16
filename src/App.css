@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+
+  /* ui gradient */
+  /* background: #333333;  
+  background: -webkit-linear-gradient(to right, #dd1818, #333333);  
+  background: linear-gradient(to right, #dd1818, #333333); */
+
+  /* font */
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+}
+
+.todo-container {
+  padding: 20px;
+  border-radius: 4px;
+  background: #fff;
+  display: inline-block;
+  box-shadow: 0px 0px 4px 1px #ddd;
+  min-height: 300px;
+  width: 500px;
+  text-align: center;
+  /* box-shadow: 2px 2px 0px #ddd, 4px 4px 0px #ccc, 6px 6px 0px #bbb; */
+}
+
+.todo-container h1 {
+  margin-top: 0px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 2px;
+  color: #f44336;
+}
