@@ -17,7 +17,39 @@ class TodoApp extends React.Component {
             taskDetails: {}
         }
     }
-
+    getListItems = () => {
+        const URL = endPoint + 'tasks';
+        console.log(URL)
+        // const data = {
+        //     name: this.props.name,
+        //     token: this.props.token,
+        //   };
+        fetch(URL, {
+            method: 'GET',
+            headers: {
+              'accept': 'application/json',
+              'Authorization': this.state.token
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+    
+              // redirect if success
+    
+              if(res.tasks.length) {
+                const todoArr = [];
+                res.tasks.forEach((item)=> {
+                    todoArr.push({id: item._id, todo: item.name, isCompleted: item.completed})
+                });
+                this.setState({
+                    todoList: todoArr
+                })
+              } else {
+                  this.showEmptyPanel();
+              }
+            });  
+    }
     componentDidMount = () => {
     //    const data = LocalStorageService.getLocalData();
 
@@ -74,6 +106,7 @@ class TodoApp extends React.Component {
               this.showEmptyPanel();
           }
         });
+        this.getListItems();
     }
 
     componentDidUpdate = () => {
@@ -123,6 +156,13 @@ class TodoApp extends React.Component {
                     newTask
                 ]
             })
+            this.setState(
+                {
+                    taskDetails: {
+                    tasksCompleted: this.state.taskDetails.tasksCompleted,
+                    totalTasks: this.state.taskDetails.totalTasks + 1
+                }}
+            )
         });
 
         }
@@ -192,6 +232,13 @@ class TodoApp extends React.Component {
                 if(!this.state.todoList.length) {
                     this.showEmptyPanel()
                 }
+                this.setState(
+                    {
+                        taskDetails: {
+                        tasksCompleted: this.state.taskDetails.tasksCompleted,
+                        totalTasks: this.state.taskDetails.totalTasks - 1
+                    }}
+                )
             });
     }
 
